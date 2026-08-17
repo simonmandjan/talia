@@ -21,7 +21,10 @@ workflows:
           storeFile=$CM_KEYSTORE_PATH
           EOF
       - name: Build Android App Bundle
-        script: flutter build appbundle --release
+        script: |
+          flutter build appbundle --release \
+            --dart-define=ONESIGNAL_REST_KEY_DRIVER=$ONESIGNAL_REST_KEY_DRIVER \
+            --dart-define=ONESIGNAL_REST_KEY_RIDER=$ONESIGNAL_REST_KEY_RIDER
     artifacts:
       - build/app/outputs/**/*.aab
       - build/app/outputs/**/mapping.txt
@@ -38,6 +41,9 @@ workflows:
       - name: Get Flutter packages
         script: flutter pub get
       - name: Build unsigned iOS archive
-        script: flutter build ipa --release --no-codesign
+        script: |
+          flutter build ipa --release --no-codesign \
+            --dart-define=ONESIGNAL_REST_KEY_DRIVER=$ONESIGNAL_REST_KEY_DRIVER \
+            --dart-define=ONESIGNAL_REST_KEY_RIDER=$ONESIGNAL_REST_KEY_RIDER
     artifacts:
       - build/ios/archive/*.xcarchive

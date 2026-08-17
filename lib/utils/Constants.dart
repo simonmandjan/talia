@@ -20,11 +20,11 @@ const TNC_URL = "<TERMS_OF_SERVICE_URL>";
 //region OneSignal Keys
 //You have to generate 2 apps on onesignal account one for rider and one for driver
 const mOneSignalAppIdDriver = '69453ced-ea74-4914-9de1-d59183bfb313';
-const mOneSignalRestKeyDriver = ''; // removed from source (leaked to a public repo) — restore via Codemagic secret or backend-relayed call
+const mOneSignalRestKeyDriver = String.fromEnvironment('ONESIGNAL_REST_KEY_DRIVER'); // injected at build time via --dart-define, set as an encrypted Codemagic variable — never hardcode here
 const mOneSignalDriverChannelID = '69453ced-ea74-4914-9de1-d59183bfb313';
 
 const mOneSignalAppIdRider = 'f52c76fd-3364-41d4-8805-a524e8c7145f';
-const mOneSignalRestKeyRider = ''; // removed from source (leaked to a public repo) — restore via Codemagic secret or backend-relayed call
+const mOneSignalRestKeyRider = String.fromEnvironment('ONESIGNAL_REST_KEY_RIDER'); // injected at build time via --dart-define, set as an encrypted Codemagic variable — never hardcode here
 const mOneSignalRiderChannelID = 'f52c76fd-3364-41d4-8805-a524e8c7145f';
 //endregion
 
