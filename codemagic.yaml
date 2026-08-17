@@ -11,7 +11,8 @@ workflows:
         script: flutter pub get
       - name: Set up Firebase config
         script: |
-          echo $GOOGLE_SERVICES_JSON_BASE64 | base64 --decode > android/app/google-services.json
+          echo "$GOOGLE_SERVICES_JSON_BASE64" | tr -d '[:space:]' | base64 --decode > android/app/google-services.json
+          python3 -c "import json; json.load(open('android/app/google-services.json'))" || (echo "ERROR: GOOGLE_SERVICES_JSON_BASE64 did not decode to valid JSON - check the Codemagic variable value" && exit 1)
       - name: Set up key.properties from Codemagic-managed keystore
         script: |
           cat > android/key.properties <<EOF
