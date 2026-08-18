@@ -7,6 +7,10 @@ workflows:
         - talia_rider_release_keystore
       groups:
         - secrets
+      vars:
+        # R8 (minifyEnabled true for this app) runs out of heap on the default
+        # 8GB build machine without this - see docs.codemagic.io/troubleshooting/common-android-issues
+        JAVA_TOOL_OPTIONS: "-Xmx5g"
       flutter: 3.32.7
     scripts:
       - name: Get Flutter packages
