@@ -32,8 +32,14 @@ workflows:
           flutter build appbundle --release \
             --dart-define=ONESIGNAL_REST_KEY_DRIVER=$ONESIGNAL_REST_KEY_DRIVER \
             --dart-define=ONESIGNAL_REST_KEY_RIDER=$ONESIGNAL_REST_KEY_RIDER
+      - name: Build Android APK
+        script: |
+          flutter build apk --release \
+            --dart-define=ONESIGNAL_REST_KEY_DRIVER=$ONESIGNAL_REST_KEY_DRIVER \
+            --dart-define=ONESIGNAL_REST_KEY_RIDER=$ONESIGNAL_REST_KEY_RIDER
     artifacts:
       - build/app/outputs/**/*.aab
+      - build/app/outputs/**/*.apk
       - build/app/outputs/**/mapping.txt
 
   # Builds an UNSIGNED archive only, to prove the iOS toolchain works.
