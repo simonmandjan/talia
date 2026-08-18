@@ -5,6 +5,8 @@ workflows:
     environment:
       android_signing:
         - talia_rider_release_keystore
+      groups:
+        - secrets
       flutter: 3.32.7
     scripts:
       - name: Get Flutter packages
@@ -37,6 +39,8 @@ workflows:
     name: iOS Release (manual, unsigned — prep only)
     max_build_duration: 60
     environment:
+      groups:
+        - secrets
       flutter: 3.32.7
     scripts:
       - name: Get Flutter packages
