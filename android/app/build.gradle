@@ -47,8 +47,8 @@ android {
         applicationId "com.talia.taxi"
         minSdkVersion 26
         targetSdkVersion 35
-        versionCode 102             // 101 already used on Play Store, bumped for the Codemagic release
-        versionName '1.1.1'
+        versionCode 103             // 102 already used on Play Store, bumped for the Codemagic release
+        versionName '1.1.2'
         multiDexEnabled true
     }
 
