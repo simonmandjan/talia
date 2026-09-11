@@ -6,8 +6,8 @@ class SebPayCountry {
 
   factory SebPayCountry.fromJson(Map<String, dynamic> json) {
     return SebPayCountry(
-      code: json['code'],
-      name: json['name'],
+      code: json['country_code'],
+      name: json['country_name'],
     );
   }
 }

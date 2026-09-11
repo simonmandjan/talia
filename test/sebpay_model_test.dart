@@ -7,8 +7,8 @@ void main() {
       final json = {
         "success": true,
         "data": [
-          {"code": "BJ", "name": "Bénin"},
-          {"code": "CI", "name": "Côte d'Ivoire"},
+          {"country_code": "BJ", "country_name": "Bénin"},
+          {"country_code": "CI", "country_name": "Côte d'Ivoire"},
         ],
       };
 
