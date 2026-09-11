@@ -108,6 +108,15 @@ class _DrawerComponentState extends State<DrawerComponent> {
                       Navigator.pop(context);
                       launchScreen(context, ReferEarnScreen(), pageRouteAnimation: PageRouteAnimation.Slide);
                     }),
+                if (getDriverAppStoreUrl() != null)
+                  DrawerWidget(
+                      paddingApply: true,
+                      title: 'Devenir chauffeur',
+                      iconData: DriverIcon,
+                      onTap: () {
+                        Navigator.pop(context);
+                        launchDriverAppStore();
+                      }),
                 DrawerWidget(
                     paddingApply: true,
                     title: 'Mighty Coin History',

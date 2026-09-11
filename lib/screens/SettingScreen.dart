@@ -95,6 +95,14 @@ class SettingScreenState extends State<SettingScreen> {
                     pageRouteAnimation: PageRouteAnimation.Slide);
               },
             ),
+            if (getDriverAppStoreUrl() != null)
+              settingItemWidget(
+                Ionicons.car_outline,
+                'Devenir chauffeur',
+                () {
+                  launchDriverAppStore();
+                },
+              ),
             settingItemWidget(
                 Ionicons.ios_trash_outline,
                 color: Colors.red,

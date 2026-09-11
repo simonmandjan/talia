@@ -115,6 +115,7 @@ class SplashScreenState extends State<SplashScreen> {
     await getLanguageList(versionNo).then((value) {
       appStore.setLoading(false);
       app_update_check = value.rider_version;
+      driverAppVersionInfo = value.driver_version;
       if (value.status == true) {
         setValue(CURRENT_LAN_VERSION, value.currentVersionNo.toString());
         if (value.data!.length > 0) {

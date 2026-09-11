@@ -5,6 +5,20 @@ import 'package:http/http.dart' as http;
 
 import '../manage_imports.dart';
 
+String? getDriverAppStoreUrl() {
+  if (driverAppVersionInfo == null) return null;
+  final url = Platform.isAndroid ? driverAppVersionInfo['playstore_url'] : driverAppVersionInfo['appstore_url'];
+  if (url == null || url.toString().trim().isEmpty) return null;
+  return url.toString();
+}
+
+void launchDriverAppStore() {
+  final url = getDriverAppStoreUrl();
+  if (url != null) {
+    launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+  }
+}
+
 Widget dotIndicator(list, i) {
   return SizedBox(
     height: 16,

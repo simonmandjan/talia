@@ -3,13 +3,15 @@ class ServerLanguageResponse {
   int? currentVersionNo;
   List<LanguageJsonData>? data;
   dynamic rider_version;
+  dynamic driver_version;
 
   ServerLanguageResponse(
-      {this.status, this.rider_version, this.data, this.currentVersionNo});
+      {this.status, this.rider_version, this.data, this.currentVersionNo, this.driver_version});
 
   ServerLanguageResponse.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     rider_version = json['rider_version'];
+    driver_version = json['driver_version'];
     currentVersionNo = int.tryParse(json['version_code'].toString());
     if (json['data'] != null) {
       data = <LanguageJsonData>[];
@@ -23,6 +25,7 @@ class ServerLanguageResponse {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['status'] = this.status;
     data['rider_version'] = this.rider_version;
+    data['driver_version'] = this.driver_version;
     data['version_code'] = this.currentVersionNo;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();

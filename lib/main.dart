@@ -23,6 +23,7 @@ final navigatorKey = GlobalKey<NavigatorState>();
 
 get getContext => navigatorKey.currentState?.overlay?.context;
 var app_update_check = null;
+var driverAppVersionInfo;
 LatLng? sourceLocation;
 late BitmapDescriptor riderIcon;
 String sourceLocationTitle = '';
