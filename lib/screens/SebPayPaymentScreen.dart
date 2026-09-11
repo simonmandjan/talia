@@ -240,7 +240,7 @@ class SebPayPaymentScreenState extends State<SebPayPaymentScreen> {
                       isExpanded: true,
                       decoration: inputDecoration(context, label: 'Country'),
                       items: countries.map((c) => DropdownMenuItem(value: c.code, child: Text(c.name.validate()))).toList(),
-                      initialValue: selectedCountryCode,
+                      value: selectedCountryCode,
                       onChanged: onCountryChanged,
                       validator: (value) => value == null ? language.thisFieldRequired : null,
                     ),
@@ -251,7 +251,7 @@ class SebPayPaymentScreenState extends State<SebPayPaymentScreen> {
                         isExpanded: true,
                         decoration: inputDecoration(context, label: 'Mobile Money Operator'),
                         items: operators.map((o) => DropdownMenuItem(value: o.slug, child: Text(o.name.validate()))).toList(),
-                        initialValue: selectedOperatorSlug,
+                        value: selectedOperatorSlug,
                         onChanged: (value) {
                           selectedOperatorSlug = value;
                           otpController.clear();
