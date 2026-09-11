@@ -669,6 +669,8 @@ class PaymentScreenState extends State<PaymentScreen> {
                 executeFatoorahPayment();
               } else if (selectedPaymentType == PAYMENT_TYPE_MONEROO) {
                 monerooPayment();
+              } else if (selectedPaymentType == PAYMENT_TYPE_SEBPAY) {
+                launchScreen(context, SebPayPaymentScreen(amount: widget.amount));
               }
             },
           ),

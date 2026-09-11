@@ -157,6 +157,7 @@ const PAYMENT_TYPE_MERCADOPAGO = 'mercadopago';
 const PAYMENT_TYPE_PAYTM = 'paytm';
 const PAYMENT_TYPE_MYFATOORAH = 'myfatoorah';
 const PAYMENT_TYPE_MONEROO = 'moneroo';
+const PAYMENT_TYPE_SEBPAY = 'sebpay';
 
 const stripeURL = 'https://api.stripe.com/v1/payment_intents';
 //endregion

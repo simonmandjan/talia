@@ -177,6 +177,22 @@ Future<LDBaseResponse> saveWallet(Map request) async {
   return LDBaseResponse.fromJson(await handleResponse(await buildHttpResponse('save-wallet', method: HttpMethod.POST, request: request)));
 }
 
+Future<SebPayCountriesResponse> sebPayGetCountries() async {
+  return SebPayCountriesResponse.fromJson(await handleResponse(await buildHttpResponse('sebpay/countries', method: HttpMethod.GET)));
+}
+
+Future<SebPayOperatorsResponse> sebPayGetOperators(String country) async {
+  return SebPayOperatorsResponse.fromJson(await handleResponse(await buildHttpResponse('sebpay/operators?country=$country', method: HttpMethod.GET)));
+}
+
+Future<SebPayCollectionResponse> sebPayCreateCollection(Map request) async {
+  return SebPayCollectionResponse.fromJson(await handleResponse(await buildHttpResponse('sebpay/collections', method: HttpMethod.POST, request: request)));
+}
+
+Future<SebPayCollectionResponse> sebPayGetCollection(String transactionId) async {
+  return SebPayCollectionResponse.fromJson(await handleResponse(await buildHttpResponse('sebpay/collections/$transactionId', method: HttpMethod.GET)));
+}
+
 Future<LDBaseResponse> saveCoinWallet(Map request) async {
   return LDBaseResponse.fromJson(await handleResponse(await buildHttpResponse('save-coin-wallet', method: HttpMethod.POST, request: request)));
 }

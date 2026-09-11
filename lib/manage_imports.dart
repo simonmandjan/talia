@@ -174,6 +174,8 @@ export './screens/LocationPermissionScreen.dart';
 export './screens/NotificationScreen.dart';
 export './screens/PDF_Screen.dart';
 export './screens/PaymentScreen.dart';
+export './screens/SebPayPaymentScreen.dart';
+export './model/SebPayModel.dart';
 export './screens/RefferalHistoryScreen.dart';
 export './screens/RideHistoryScreen.dart';
 export './screens/TermsConditionScreen.dart';
