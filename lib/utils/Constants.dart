@@ -158,6 +158,7 @@ const PAYMENT_TYPE_PAYTM = 'paytm';
 const PAYMENT_TYPE_MYFATOORAH = 'myfatoorah';
 const PAYMENT_TYPE_MONEROO = 'moneroo';
 const PAYMENT_TYPE_SEBPAY = 'sebpay';
+const PAYMENT_TYPE_AIRTEL_TCHAD = 'airtel_tchad';
 
 const stripeURL = 'https://api.stripe.com/v1/payment_intents';
 //endregion

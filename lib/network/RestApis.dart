@@ -193,6 +193,14 @@ Future<SebPayCollectionResponse> sebPayGetCollection(String transactionId) async
   return SebPayCollectionResponse.fromJson(await handleResponse(await buildHttpResponse('sebpay/collections/$transactionId', method: HttpMethod.GET)));
 }
 
+Future<AirtelCollectionResponse> airtelCreateCollection(Map request) async {
+  return AirtelCollectionResponse.fromJson(await handleResponse(await buildHttpResponse('airtel/collections', method: HttpMethod.POST, request: request)));
+}
+
+Future<AirtelCollectionResponse> airtelGetCollectionStatus(String transactionId) async {
+  return AirtelCollectionResponse.fromJson(await handleResponse(await buildHttpResponse('airtel/collections/$transactionId', method: HttpMethod.GET)));
+}
+
 Future<LDBaseResponse> saveCoinWallet(Map request) async {
   return LDBaseResponse.fromJson(await handleResponse(await buildHttpResponse('save-coin-wallet', method: HttpMethod.POST, request: request)));
 }

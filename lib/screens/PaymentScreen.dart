@@ -65,6 +65,7 @@ class PaymentScreenState extends State<PaymentScreen> {
     await getPaymentList().then((value) {
       appStore.setLoading(false);
       paymentList.addAll(value.data!);
+      paymentList.removeWhere((e) => e.type == PAYMENT_TYPE_AIRTEL_TCHAD && !sharedPref.getString(CONTACT_NUMBER).validate().startsWith('+235'));
       selectedPaymentType = paymentList.first.type;
       if (paymentList.isNotEmpty) {
         paymentList.forEach((element) {
@@ -671,6 +672,8 @@ class PaymentScreenState extends State<PaymentScreen> {
                 monerooPayment();
               } else if (selectedPaymentType == PAYMENT_TYPE_SEBPAY) {
                 launchScreen(context, SebPayPaymentScreen(amount: widget.amount));
+              } else if (selectedPaymentType == PAYMENT_TYPE_AIRTEL_TCHAD) {
+                launchScreen(context, AirtelMoneyPaymentScreen(amount: widget.amount));
               }
             },
           ),
