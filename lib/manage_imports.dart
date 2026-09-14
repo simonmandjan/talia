@@ -178,6 +178,8 @@ export './screens/SebPayPaymentScreen.dart';
 export './model/SebPayModel.dart';
 export './screens/AirtelMoneyPaymentScreen.dart';
 export './model/AirtelMoneyModel.dart';
+export './screens/MoovMoneyPaymentScreen.dart';
+export './model/MoovMoneyModel.dart';
 export './screens/RefferalHistoryScreen.dart';
 export './screens/RideHistoryScreen.dart';
 export './screens/TermsConditionScreen.dart';

@@ -201,6 +201,14 @@ Future<AirtelCollectionResponse> airtelGetCollectionStatus(String transactionId)
   return AirtelCollectionResponse.fromJson(await handleResponse(await buildHttpResponse('airtel/collections/$transactionId', method: HttpMethod.GET)));
 }
 
+Future<MoovCollectionResponse> moovCreateCollection(Map request) async {
+  return MoovCollectionResponse.fromJson(await handleResponse(await buildHttpResponse('moov/collections', method: HttpMethod.POST, request: request)));
+}
+
+Future<MoovCollectionResponse> moovGetCollectionStatus(String transactionId) async {
+  return MoovCollectionResponse.fromJson(await handleResponse(await buildHttpResponse('moov/collections/$transactionId', method: HttpMethod.GET)));
+}
+
 Future<LDBaseResponse> saveCoinWallet(Map request) async {
   return LDBaseResponse.fromJson(await handleResponse(await buildHttpResponse('save-coin-wallet', method: HttpMethod.POST, request: request)));
 }
