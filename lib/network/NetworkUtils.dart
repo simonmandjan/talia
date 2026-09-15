@@ -52,7 +52,12 @@ Future<Response> buildHttpResponse(String endPoint, {HttpMethod method = HttpMet
       );
       return response;
     } catch (e, s) {
-      FirebaseCrashlytics.instance.recordError("API_ERROR->${url.toString()}::" + e.toString(), s, fatal: true);
+      // Not fatal: network errors here (timeouts, "no route to host", etc.)
+      // are already caught and handled by every caller — they never crash
+      // the app. Reporting them as fatal pollutes Crashlytics' stability
+      // dashboard with ordinary mobile-network flakiness. Matches the
+      // driver app's already-correct behavior in this same function.
+      FirebaseCrashlytics.instance.recordError("API_ERROR->${url.toString()}::" + e.toString(), s, fatal: false);
       throw 'Something Went Wrong';
     }
   } else {
@@ -115,7 +120,8 @@ Future handleResponse(Response response, [bool? avoidTokenError]) async {
       throw parseHtmlString(body['message']);
     } on Exception catch (e, s) {
       log(e);
-      FirebaseCrashlytics.instance.recordError("handleResponse_ERROR->${response.statusCode}::" + e.toString(), s, fatal: true);
+      // Not fatal — see the same note in buildHttpResponse() above.
+      FirebaseCrashlytics.instance.recordError("handleResponse_ERROR->${response.statusCode}::" + e.toString(), s, fatal: false);
       throw 'Something Went Wrong';
     }
   }
