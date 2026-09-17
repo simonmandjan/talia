@@ -85,7 +85,7 @@ class WebViewScreenState extends State<WebViewScreen> {
               if (url.contains(widget.cancelUrlContains)) {
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Payment Canceled")),
+                  SnackBar(content: Text(language.paymentCanceled)),
                 );
                 return NavigationActionPolicy.CANCEL;
               }

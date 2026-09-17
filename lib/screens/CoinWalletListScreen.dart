@@ -67,7 +67,7 @@ class _CoinWalletListScreenState extends State<CoinWalletListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Coin Wallet',
+          language.coinWallet,
           style: TextStyle(color: Colors.white),
         ),
       ),
@@ -150,7 +150,7 @@ class _TotalCoinsBanner extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Total Coins',
+                  language.totalCoins,
                   style: secondaryTextStyle(color: Colors.white70, size: 13),
                 ),
                 const SizedBox(height: 4),
@@ -167,7 +167,7 @@ class _TotalCoinsBanner extends StatelessWidget {
               const Icon(Icons.stars_rounded, color: Colors.amber, size: 20),
               const SizedBox(height: 4),
               Text(
-                'Coins',
+                language.coins,
                 style: secondaryTextStyle(color: Colors.white70, size: 12),
               ),
             ],
@@ -227,7 +227,7 @@ class _CoinTransactionCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        _isCredit ? 'Coins Earned' : 'Coins Redeemed',
+                        _isCredit ? language.coinsEarned : language.coinsRedeemed,
                         style: boldTextStyle(size: 14),
                       ),
                       const SizedBox(height: 4),
@@ -236,7 +236,7 @@ class _CoinTransactionCard extends StatelessWidget {
                           Icon(Icons.receipt_long_outlined, size: 12, color: textSecondaryColor),
                           const SizedBox(width: 4),
                           Text(
-                            'Ride #${item.rideId ?? '-'}',
+                            '${language.rideId} #${item.rideId ?? '-'}',
                             style: secondaryTextStyle(size: 12),
                           ),
                         ],
@@ -291,7 +291,7 @@ class _CoinTransactionCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 2),
                         Text(
-                          'coins',
+                          language.coins,
                           style: secondaryTextStyle(size: 11),
                         ),
                       ],

@@ -534,7 +534,7 @@ class NewestimateridelistwidgetState extends State<Newestimateridelistwidget> wi
 
   Future<void> showCoinSelectionBottomSheet() async {
     if (totalCoins <= 0) {
-      toast("You don't have any coins available");
+      toast(language.dontHaveAnyCoins);
       return;
     }
 
@@ -946,7 +946,7 @@ class NewestimateridelistwidgetState extends State<Newestimateridelistwidget> wi
       child: InkWell(
         onTap: () {
           if (coinDiscount > 0) {
-            toast("Remove existing coins to apply new coins.");
+            toast(language.removeExistingCoins);
           } else {
             showCoinSelectionBottomSheet();
           }
@@ -977,7 +977,7 @@ class NewestimateridelistwidgetState extends State<Newestimateridelistwidget> wi
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      useCoinsEnabled && usedCoins > 0 ? '$usedCoins Coins Applied' : 'Use Coins',
+                      useCoinsEnabled && usedCoins > 0 ? '$usedCoins ${language.coinsApplied}' : language.useCoins,
                       style: boldTextStyle(
                         size: 14,
                         color: useCoinsEnabled ? primaryColor : textPrimaryColorGlobal,
@@ -985,7 +985,7 @@ class NewestimateridelistwidgetState extends State<Newestimateridelistwidget> wi
                     ),
                     SizedBox(height: 2),
                     Text(
-                      useCoinsEnabled && usedCoins > 0 ? 'Save ${coinDiscount.toString()}' : 'You have $totalCoins coins available',
+                      useCoinsEnabled && usedCoins > 0 ? '${language.saveAmount} ${coinDiscount.toString()}' : '${language.youHave} $totalCoins ${language.coinsAvailable}',
                       style: secondaryTextStyle(
                         size: 12,
                         color: useCoinsEnabled ? primaryColor : textSecondaryColorGlobal,
@@ -1770,7 +1770,7 @@ class NewestimateridelistwidgetState extends State<Newestimateridelistwidget> wi
                           DateTime now = DateTime.now();
                           DateTime minValid = now.add(Duration(minutes: 15));
                           if (d1.isBefore(minValid)) {
-                            toast("Please select a time at least 15 minutes from now."); // todo language
+                            toast(language.selectTimeAtLeast15Min);
                           } else {
                             setState(() {
                               schduleRideDateTime = d1;
@@ -1886,7 +1886,7 @@ class NewestimateridelistwidgetState extends State<Newestimateridelistwidget> wi
                 Expanded(child: Divider()),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Text("OR"),
+                  child: Text(language.or),
                 ),
                 Expanded(child: Divider()),
               ],
@@ -1918,11 +1918,11 @@ class NewestimateridelistwidgetState extends State<Newestimateridelistwidget> wi
 
   Future<void> saveBookingData({String? ride_type}) async {
     if (schduleRideDateTime != null && schduleRideDateTime!.isBefore(DateTime.now())) {
-      return toast("Enter Valid Schedule Time");
+      return toast(language.enterValidScheduleTime);
     }
     DateFormat format = DateFormat("yyyy-MM-dd hh:mm a");
     if (formattedTime != null && format.parse(formattedTime.toString()).isBefore(DateTime.now())) {
-      return toast("Enter Valid Schedule Time");
+      return toast(language.enterValidScheduleTime);
     }
 
     if (isRideForOther == false && nameController.text.isEmpty) {
@@ -2187,7 +2187,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Use Coins',
+                  language.useCoins,
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -2228,7 +2228,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Available Coins',
+                          language.availableCoins,
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.grey[600],
@@ -2236,7 +2236,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          '${widget.totalCoins} Coins',
+                          '${widget.totalCoins} ${language.coins}',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -2250,7 +2250,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        'Max Usable',
+                        language.maxUsable,
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.grey[600],
@@ -2258,7 +2258,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        '$maxUsableCoins Coins',
+                        '$maxUsableCoins ${language.coins}',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -2272,7 +2272,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
             ),
             const SizedBox(height: 20),
             Text(
-              'Enter Coins to Use',
+              language.enterCoinsToUse,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -2286,7 +2286,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               onChanged: _updateCoins,
               decoration: InputDecoration(
-                hintText: 'Enter coins',
+                hintText: language.enterCoins,
                 prefixIcon: Image.asset(
                   ic_coin,
                   scale: 20,
@@ -2318,7 +2318,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
             ),
             const SizedBox(height: 16),
             Text(
-              'Quick Select',
+              language.quickSelect,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -2354,7 +2354,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: _QuickSelectButton(
-                    label: 'Max',
+                    label: language.lblMax,
                     onTap: () => _setCoinsPercentage(1.0),
                     primaryColor: primaryColor,
                   ),
@@ -2379,7 +2379,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Ride Amount:',
+                          language.rideAmount,
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey[700],
@@ -2400,7 +2400,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Coin Discount:',
+                          language.coinDiscount,
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.green[700],
@@ -2421,7 +2421,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Final Amount:',
+                          language.finalAmount,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -2455,7 +2455,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
                       ),
                     ),
                     child: Text(
-                      'Cancel',
+                      language.cancel,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -2484,7 +2484,7 @@ class _CoinSelectionDialogState extends State<CoinSelectionDialog> {
                       ),
                     ),
                     child: Text(
-                      'Apply ${selectedCoins > 0 ? "$selectedCoins Coins" : ""}',
+                      '${language.apply} ${selectedCoins > 0 ? "$selectedCoins ${language.coins}" : ""}',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

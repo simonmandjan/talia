@@ -18,7 +18,7 @@ class GoogleMapScreen extends StatefulWidget {
 class GoogleMapScreenState extends State<GoogleMapScreen> {
   GoogleMapController? mapController;
   LatLng? selectedPosition;
-  String selectedAddress = "Fetching address...";
+  late String selectedAddress;
   bool isLoading = true;
   TextEditingController searchController = TextEditingController();
   List<Suggestion> placeSuggestions = [];
@@ -32,6 +32,7 @@ class GoogleMapScreenState extends State<GoogleMapScreen> {
   @override
   void initState() {
     super.initState();
+    selectedAddress = language.fetchingAddress;
     _getCurrentLocation();
   }
 
@@ -39,7 +40,7 @@ class GoogleMapScreenState extends State<GoogleMapScreen> {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       setState(() {
-        selectedAddress = "Location services are disabled";
+        selectedAddress = language.locationServicesDisabled;
       });
       return;
     }
@@ -49,7 +50,7 @@ class GoogleMapScreenState extends State<GoogleMapScreen> {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
         setState(() {
-          selectedAddress = "Permission denied. Enable location.";
+          selectedAddress = language.pleaseEnableLocationPermission;
         });
         return;
       }
@@ -57,7 +58,7 @@ class GoogleMapScreenState extends State<GoogleMapScreen> {
 
     if (permission == LocationPermission.deniedForever) {
       setState(() {
-        selectedAddress = "Permission permanently denied. Enable from settings.";
+        selectedAddress = language.permissionPermanentlyDenied;
       });
       return;
     }
@@ -103,7 +104,7 @@ class GoogleMapScreenState extends State<GoogleMapScreen> {
               onCameraMove: (CameraPosition position) {
                 setState(() {
                   selectedPosition = position.target;
-                  selectedAddress = "Fetching address...";
+                  selectedAddress = language.fetchingAddress;
                 });
               },
               onCameraIdle: () {
@@ -123,7 +124,7 @@ class GoogleMapScreenState extends State<GoogleMapScreen> {
                     controller: searchController,
                     onChanged: (t) => fetchPlaceSuggestions(searchController.text),
                     decoration: InputDecoration(
-                      hintText: "Search for a place",
+                      hintText: language.searchForAPlace,
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
@@ -200,7 +201,7 @@ class GoogleMapScreenState extends State<GoogleMapScreen> {
                   SizedBox(height: 10),
                   AppButtonWidget(
                     width: MediaQuery.of(context).size.width,
-                    onTap: selectedPosition == null && selectedAddress != "Fetching address..."
+                    onTap: selectedPosition == null && selectedAddress != language.fetchingAddress
                         ? null
                         : () {
                       Navigator.pop(context, {
@@ -326,7 +327,7 @@ class GoogleMapScreenState extends State<GoogleMapScreen> {
       }
     } catch (e) {
       setState(() {
-        selectedAddress = "Error fetching address";
+        selectedAddress = language.errorFetchingAddress;
       });
     }
   }

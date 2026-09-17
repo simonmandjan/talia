@@ -59,7 +59,7 @@ class _ReferEarnScreenState extends State<ReferEarnScreen> {
                         ClipboardData(text: appStore.referralCode.toString()))
                     .then((_) {
                   toast(
-                      "${appStore.referralCode.toString()} Copied to clipboard");
+                      "${appStore.referralCode.toString()} ${language.copiedToClipboard}");
                 });
               }) /*.visible(!appStore.referralCode!.isEmpty)*/,
               30.height,
@@ -78,7 +78,7 @@ class _ReferEarnScreenState extends State<ReferEarnScreen> {
               onTap: () {
                 SharePlus.instance.share(ShareParams(
                     text:
-                        'Hey! Use my referral code ${appStore.referralCode} and join $mAppName to support me!'));
+                        '${language.shareDes1} ${appStore.referralCode} ${language.shareDes2} $mAppName ${language.shareDes3}'));
               },
             ),
           ),

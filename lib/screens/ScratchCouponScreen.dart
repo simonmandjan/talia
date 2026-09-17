@@ -34,7 +34,7 @@ class ScratchCouponScreenState extends State<ScratchCouponScreen> {
 
   Future<void> _onDone() async {
     if (!_isRevealed) {
-      toast('Please scratch the coupon to reveal your reward!');
+      toast(language.pleaseScratchCoupon);
       return;
     }
 
@@ -78,7 +78,7 @@ class ScratchCouponScreenState extends State<ScratchCouponScreen> {
             },
           ),
           title: Text(
-            'Your Reward',
+            language.yourReward,
             style: boldTextStyle(color: Colors.white, size: 20),
           ),
           centerTitle: true,
@@ -116,13 +116,13 @@ class ScratchCouponScreenState extends State<ScratchCouponScreen> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Scratch & Win!',
+                        language.scratchAndWin,
                         style: boldTextStyle(size: 26, color: Colors.black87),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Reveal your exclusive reward below',
+                        language.revealYourExclusiveReward,
                         style: secondaryTextStyle(size: 15),
                         textAlign: TextAlign.center,
                       ),
@@ -153,7 +153,7 @@ class ScratchCouponScreenState extends State<ScratchCouponScreen> {
                               if (widget.coin_earnings == 0) ...[
                                 const SizedBox(height: 24),
                                 Text(
-                                  'Oops!',
+                                  language.oops,
                                   style: TextStyle(
                                     fontSize: 28,
                                     fontWeight: FontWeight.bold,
@@ -163,7 +163,7 @@ class ScratchCouponScreenState extends State<ScratchCouponScreen> {
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
-                                  'Better Luck',
+                                  language.betterLuck,
                                   style: TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.w600,
@@ -171,7 +171,7 @@ class ScratchCouponScreenState extends State<ScratchCouponScreen> {
                                   ),
                                 ),
                                 Text(
-                                  'Next Time!',
+                                  language.nextTime,
                                   style: TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.w600,
@@ -212,7 +212,7 @@ class ScratchCouponScreenState extends State<ScratchCouponScreen> {
                                             '${widget.coin_earnings ?? 0}',
                                             style: boldTextStyle(size: 32, color: primaryColor),
                                           ),
-                                          Text('Coins Won!', style: secondaryTextStyle()),
+                                          Text(language.coinsWon, style: secondaryTextStyle()),
                                         ],
                                       ),
                                     ),
@@ -222,7 +222,7 @@ class ScratchCouponScreenState extends State<ScratchCouponScreen> {
                               ],
                               if (!_isRevealed)
                                 Text(
-                                  '${(100 - (_scratchPercent * 100 / _revealThreshold)).clamp(0, 100).toInt()}% more to go',
+                                  '${(100 - (_scratchPercent * 100 / _revealThreshold)).clamp(0, 100).toInt()}${language.percentMoreToGo}',
                                   style: secondaryTextStyle(size: 12),
                                 ),
                               const SizedBox(height: 20),
@@ -232,7 +232,7 @@ class ScratchCouponScreenState extends State<ScratchCouponScreen> {
                       ),
                       const SizedBox(height: 48),
                       AppButtonWidget(
-                        text: _isRevealed ? "CLAIM REWARD" : "SCRATCH TO REVEAL",
+                        text: _isRevealed ? language.claimReward : language.scratchToReveal,
                         textStyle: boldTextStyle(color: Colors.white),
                         color: _isRevealed ? primaryColor : Colors.grey,
                         width: context.width() * 0.7,

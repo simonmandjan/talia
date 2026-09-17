@@ -81,7 +81,7 @@ class CarDetailWidgetState extends State<CarDetailWidget> {
               SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text('Coins', style: primaryTextStyle(color: Colors.green)), printAmountWidgetForEstimate(amount: '${widget.service.coinsUsed!.toStringAsFixed(digitAfterDecimal)}', weight: FontWeight.normal, color: Colors.green, sign: "-")],
+                children: [Text(language.coins, style: primaryTextStyle(color: Colors.green)), printAmountWidgetForEstimate(amount: '${widget.service.coinsUsed!.toStringAsFixed(digitAfterDecimal)}', weight: FontWeight.normal, color: Colors.green, sign: "-")],
               ),
               SizedBox(height: 8),
             ],
@@ -141,7 +141,7 @@ class CarDetailWidgetState extends State<CarDetailWidget> {
               SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text('Coins', style: primaryTextStyle(color: Colors.green)), printAmountWidgetForEstimate(amount: '${widget.service.coinsUsed!.toStringAsFixed(digitAfterDecimal)}', weight: FontWeight.normal, color: Colors.green, sign: "-")],
+                children: [Text(language.coins, style: primaryTextStyle(color: Colors.green)), printAmountWidgetForEstimate(amount: '${widget.service.coinsUsed!.toStringAsFixed(digitAfterDecimal)}', weight: FontWeight.normal, color: Colors.green, sign: "-")],
               ),
               SizedBox(height: 8),
             ],

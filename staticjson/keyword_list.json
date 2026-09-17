@@ -254,6 +254,12 @@
         "keyword_id": 157,
         "keyword_name": "pleaseAcceptTermsOfServicePrivacyPolicy",
         "keyword_value": "Please accept the Terms of Service and Privacy Policy"
+      },
+      {
+        "screenId": "2",
+        "keyword_id": 595,
+        "keyword_name": "signUpToGetStarted",
+        "keyword_value": "Sign up to get started"
       }
     ]
   },
@@ -878,6 +884,198 @@
         "keyword_id": 481,
         "keyword_name": "viewDetails",
         "keyword_value": "View Details"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 546,
+        "keyword_name": "shareDes1",
+        "keyword_value": "Hey! Use my referral code"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 547,
+        "keyword_name": "shareDes2",
+        "keyword_value": "and join"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 548,
+        "keyword_name": "shareDes3",
+        "keyword_value": "to support me!"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 549,
+        "keyword_name": "copiedToClipboard",
+        "keyword_value": "Copied to clipboard"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 566,
+        "keyword_name": "useCoins",
+        "keyword_value": "Use Coins"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 567,
+        "keyword_name": "availableCoins",
+        "keyword_value": "Available Coins"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 568,
+        "keyword_name": "maxUsable",
+        "keyword_value": "Max Usable"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 569,
+        "keyword_name": "enterCoinsToUse",
+        "keyword_value": "Enter Coins to Use"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 570,
+        "keyword_name": "enterCoins",
+        "keyword_value": "Enter coins"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 571,
+        "keyword_name": "quickSelect",
+        "keyword_value": "Quick Select"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 572,
+        "keyword_name": "lblMax",
+        "keyword_value": "Max"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 573,
+        "keyword_name": "rideAmount",
+        "keyword_value": "Ride Amount:"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 574,
+        "keyword_name": "coinDiscount",
+        "keyword_value": "Coin Discount:"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 575,
+        "keyword_name": "finalAmount",
+        "keyword_value": "Final Amount:"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 576,
+        "keyword_name": "apply",
+        "keyword_value": "Apply"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 577,
+        "keyword_name": "coinsApplied",
+        "keyword_value": "Coins Applied"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 578,
+        "keyword_name": "saveAmount",
+        "keyword_value": "Save"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 579,
+        "keyword_name": "youHave",
+        "keyword_value": "You have"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 580,
+        "keyword_name": "coinsAvailable",
+        "keyword_value": "coins available"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 581,
+        "keyword_name": "dontHaveAnyCoins",
+        "keyword_value": "You don't have any coins available"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 582,
+        "keyword_name": "removeExistingCoins",
+        "keyword_value": "Remove existing coins to apply new coins."
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 583,
+        "keyword_name": "selectTimeAtLeast15Min",
+        "keyword_value": "Please select a time at least 15 minutes from now."
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 584,
+        "keyword_name": "enterValidScheduleTime",
+        "keyword_value": "Enter Valid Schedule Time"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 590,
+        "keyword_name": "locationRequestTimedOut",
+        "keyword_value": "Location request timed out"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 591,
+        "keyword_name": "unableToFetchLocation",
+        "keyword_value": "Unable to fetch location:"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 592,
+        "keyword_name": "pleaseSelectFutureTime",
+        "keyword_value": "Please select a future time."
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 593,
+        "keyword_name": "pleaseProvideFlightNumber",
+        "keyword_value": "Please Provide Flight Number"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 594,
+        "keyword_name": "pleaseProvidePickupTime",
+        "keyword_value": "Please provide pickup time"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 596,
+        "keyword_name": "becomeADriver",
+        "keyword_value": "Become a driver"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 597,
+        "keyword_name": "mightyCoinHistory",
+        "keyword_value": "Mighty Coin History"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 598,
+        "keyword_name": "pleaseFirstSelectSourceLocation",
+        "keyword_value": "Please first select source location"
+      },
+      {
+        "screenId": "5",
+        "keyword_id": 599,
+        "keyword_name": "pleaseSelectLocation",
+        "keyword_value": "Please Select Location"
       }
     ]
   },
@@ -1256,6 +1454,12 @@
         "keyword_id": 503,
         "keyword_name": "insufficientWalletBalanceToPay",
         "keyword_value": "Insufficient wallet balance to pay the extra charges."
+      },
+      {
+        "screenId": "9",
+        "keyword_id": 545,
+        "keyword_name": "somethingWrong",
+        "keyword_value": "Something wrong"
       }
     ]
   },
@@ -1370,6 +1574,72 @@
         "keyword_id": 225,
         "keyword_name": "success",
         "keyword_value": "Success"
+      },
+      {
+        "screenId": "13",
+        "keyword_id": 523,
+        "keyword_name": "waitingForPaymentConfirmationOnPhone",
+        "keyword_value": "Waiting for you to confirm this payment on your phone..."
+      },
+      {
+        "screenId": "13",
+        "keyword_id": 524,
+        "keyword_name": "paymentStillProcessing",
+        "keyword_value": "Your payment is still processing. Please check your wallet balance in a moment before retrying."
+      },
+      {
+        "screenId": "13",
+        "keyword_id": 525,
+        "keyword_name": "country",
+        "keyword_value": "Country"
+      },
+      {
+        "screenId": "13",
+        "keyword_id": 526,
+        "keyword_name": "mobileMoneyOperator",
+        "keyword_value": "Mobile Money Operator"
+      },
+      {
+        "screenId": "13",
+        "keyword_id": 527,
+        "keyword_name": "otpCode",
+        "keyword_value": "OTP Code"
+      },
+      {
+        "screenId": "13",
+        "keyword_id": 528,
+        "keyword_name": "dialPrefix",
+        "keyword_value": "Dial"
+      },
+      {
+        "screenId": "13",
+        "keyword_id": 529,
+        "keyword_name": "dialSuffix",
+        "keyword_value": "on your phone to receive your confirmation code"
+      },
+      {
+        "screenId": "13",
+        "keyword_id": 530,
+        "keyword_name": "paymentSuccessWalletUpdateFailed",
+        "keyword_value": "Your payment was successful, but updating your wallet balance failed. Please contact support and reference transaction"
+      },
+      {
+        "screenId": "13",
+        "keyword_id": 531,
+        "keyword_name": "paymentFailedInvalidToken",
+        "keyword_value": "Payment failed: Invalid token or unsupported currency."
+      },
+      {
+        "screenId": "13",
+        "keyword_id": 532,
+        "keyword_name": "externalWallet",
+        "keyword_value": "External wallet:"
+      },
+      {
+        "screenId": "13",
+        "keyword_id": 533,
+        "keyword_name": "paymentCanceled",
+        "keyword_value": "Payment Canceled"
       }
     ]
   },
@@ -2474,6 +2744,36 @@
         "keyword_id": 149,
         "keyword_name": "placeNotInArea",
         "keyword_value": "Place not in area"
+      },
+      {
+        "screenId": "28",
+        "keyword_id": 585,
+        "keyword_name": "fetchingAddress",
+        "keyword_value": "Fetching address..."
+      },
+      {
+        "screenId": "28",
+        "keyword_id": 586,
+        "keyword_name": "locationServicesDisabled",
+        "keyword_value": "Location services are disabled"
+      },
+      {
+        "screenId": "28",
+        "keyword_id": 587,
+        "keyword_name": "permissionPermanentlyDenied",
+        "keyword_value": "Permission permanently denied. Enable from settings."
+      },
+      {
+        "screenId": "28",
+        "keyword_id": 588,
+        "keyword_name": "errorFetchingAddress",
+        "keyword_value": "Error fetching address"
+      },
+      {
+        "screenId": "28",
+        "keyword_id": 589,
+        "keyword_name": "searchForAPlace",
+        "keyword_value": "Search for a place"
       }
     ]
   },
@@ -2498,6 +2798,36 @@
         "keyword_id": 169,
         "keyword_name": "invoiceDate",
         "keyword_value": "Invoice Date"
+      },
+      {
+        "screenId": "29",
+        "keyword_id": 534,
+        "keyword_name": "driverPayoutReportDocument",
+        "keyword_value": "Driver Payout Report Document"
+      },
+      {
+        "screenId": "29",
+        "keyword_id": 535,
+        "keyword_name": "invoiceDownloadedAt",
+        "keyword_value": "invoice downloaded at"
+      },
+      {
+        "screenId": "29",
+        "keyword_id": 536,
+        "keyword_name": "failedToDownloadPdf",
+        "keyword_value": "Failed to download PDF"
+      },
+      {
+        "screenId": "29",
+        "keyword_id": 537,
+        "keyword_name": "allowStoragePermission",
+        "keyword_value": "Please allow storage permission and try again."
+      },
+      {
+        "screenId": "29",
+        "keyword_id": 538,
+        "keyword_name": "errorWhileDownloadingPdf",
+        "keyword_value": "Error while downloading PDF"
       }
     ]
   },
@@ -2936,6 +3266,48 @@
         "keyword_id": 466,
         "keyword_name": "arrivingAtPickup",
         "keyword_value": "Arriving at pickup"
+      },
+      {
+        "screenId": "34",
+        "keyword_id": 522,
+        "keyword_name": "payoutReport",
+        "keyword_value": "Payout Report"
+      },
+      {
+        "screenId": "34",
+        "keyword_id": 539,
+        "keyword_name": "unableToCompleteRideCheckGps",
+        "keyword_value": "Unable to complete the ride. Check your GPS and try again."
+      },
+      {
+        "screenId": "34",
+        "keyword_id": 540,
+        "keyword_name": "day",
+        "keyword_value": "day"
+      },
+      {
+        "screenId": "34",
+        "keyword_id": 541,
+        "keyword_name": "days",
+        "keyword_value": "days"
+      },
+      {
+        "screenId": "34",
+        "keyword_id": 542,
+        "keyword_name": "hr",
+        "keyword_value": "hr"
+      },
+      {
+        "screenId": "34",
+        "keyword_id": 543,
+        "keyword_name": "remaining",
+        "keyword_value": "remaining"
+      },
+      {
+        "screenId": "34",
+        "keyword_id": 544,
+        "keyword_name": "canUpdateRideStatusOnlyOnScheduledTime",
+        "keyword_value": "You can update the ride status only on the scheduled time."
       }
     ]
   },
@@ -3242,6 +3614,204 @@
         "keyword_id": 369,
         "keyword_name": "bid_for_ride",
         "keyword_value": "Bid For Ride"
+      }
+    ]
+  },
+  {
+    "screenID": "40",
+    "ScreenName": "DriverPayoutScreen",
+    "keyword_data": [
+      {
+        "screenId": "40",
+        "keyword_id": 508,
+        "keyword_name": "payoutReports",
+        "keyword_value": "Payout Reports"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 509,
+        "keyword_name": "weeklyEarningsOverview",
+        "keyword_value": "Weekly earnings overview"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 510,
+        "keyword_name": "totalPayout",
+        "keyword_value": "TOTAL PAYOUT"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 511,
+        "keyword_name": "totalPendingPayout",
+        "keyword_value": "TOTAL PENDING PAYOUT"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 512,
+        "keyword_name": "lblAll",
+        "keyword_value": "All"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 513,
+        "keyword_name": "processing",
+        "keyword_value": "Processing"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 514,
+        "keyword_name": "noMoreRecords",
+        "keyword_value": "No more records"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 515,
+        "keyword_name": "noPayoutRecordsFound",
+        "keyword_value": "No payout records found"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 516,
+        "keyword_name": "pullDownToRefresh",
+        "keyword_value": "Pull down to refresh"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 517,
+        "keyword_name": "failedToLoadPayouts",
+        "keyword_value": "Failed to load payouts"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 518,
+        "keyword_name": "commission",
+        "keyword_value": "Commission"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 519,
+        "keyword_name": "payoutAmount",
+        "keyword_value": "Payout Amount"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 520,
+        "keyword_name": "viewDocument",
+        "keyword_value": "View Document"
+      },
+      {
+        "screenId": "40",
+        "keyword_id": 521,
+        "keyword_name": "generated",
+        "keyword_value": "Generated"
+      }
+    ]
+  },
+  {
+    "screenID": "41",
+    "ScreenName": "CoinWalletListScreen",
+    "keyword_data": [
+      {
+        "screenId": "41",
+        "keyword_id": 561,
+        "keyword_name": "coinWallet",
+        "keyword_value": "Coin Wallet"
+      },
+      {
+        "screenId": "41",
+        "keyword_id": 562,
+        "keyword_name": "totalCoins",
+        "keyword_value": "Total Coins"
+      },
+      {
+        "screenId": "41",
+        "keyword_id": 563,
+        "keyword_name": "coins",
+        "keyword_value": "Coins"
+      },
+      {
+        "screenId": "41",
+        "keyword_id": 564,
+        "keyword_name": "coinsEarned",
+        "keyword_value": "Coins Earned"
+      },
+      {
+        "screenId": "41",
+        "keyword_id": 565,
+        "keyword_name": "coinsRedeemed",
+        "keyword_value": "Coins Redeemed"
+      }
+    ]
+  },
+  {
+    "screenID": "42",
+    "ScreenName": "ScratchCouponScreen",
+    "keyword_data": [
+      {
+        "screenId": "42",
+        "keyword_id": 550,
+        "keyword_name": "yourReward",
+        "keyword_value": "Your Reward"
+      },
+      {
+        "screenId": "42",
+        "keyword_id": 551,
+        "keyword_name": "scratchAndWin",
+        "keyword_value": "Scratch & Win!"
+      },
+      {
+        "screenId": "42",
+        "keyword_id": 552,
+        "keyword_name": "revealYourExclusiveReward",
+        "keyword_value": "Reveal your exclusive reward below"
+      },
+      {
+        "screenId": "42",
+        "keyword_id": 553,
+        "keyword_name": "oops",
+        "keyword_value": "Oops!"
+      },
+      {
+        "screenId": "42",
+        "keyword_id": 554,
+        "keyword_name": "betterLuck",
+        "keyword_value": "Better Luck"
+      },
+      {
+        "screenId": "42",
+        "keyword_id": 555,
+        "keyword_name": "nextTime",
+        "keyword_value": "Next Time!"
+      },
+      {
+        "screenId": "42",
+        "keyword_id": 556,
+        "keyword_name": "coinsWon",
+        "keyword_value": "Coins Won!"
+      },
+      {
+        "screenId": "42",
+        "keyword_id": 557,
+        "keyword_name": "percentMoreToGo",
+        "keyword_value": "% more to go"
+      },
+      {
+        "screenId": "42",
+        "keyword_id": 558,
+        "keyword_name": "claimReward",
+        "keyword_value": "CLAIM REWARD"
+      },
+      {
+        "screenId": "42",
+        "keyword_id": 559,
+        "keyword_name": "scratchToReveal",
+        "keyword_value": "SCRATCH TO REVEAL"
+      },
+      {
+        "screenId": "42",
+        "keyword_id": 560,
+        "keyword_name": "pleaseScratchCoupon",
+        "keyword_value": "Please scratch the coupon to reveal your reward!"
       }
     ]
   }

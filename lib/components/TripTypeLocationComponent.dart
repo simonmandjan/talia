@@ -264,7 +264,7 @@ class TripTypeLocationComponentState extends State<TripTypeLocationComponent> {
                                                       }
                                                     } else if (widget.trip_type == tripTypeZoneWise || widget.trip_type == tripTypeAirportToZone) {
                                                       if (widget.trip_type == tripTypeZoneWise && sourceId == null) {
-                                                        toast('Please first select source location');
+                                                        toast(language.pleaseFirstSelectSourceLocation);
                                                         return;
                                                       }
                                                       dropDetails = await launchScreen(
@@ -463,7 +463,7 @@ class TripTypeLocationComponentState extends State<TripTypeLocationComponent> {
                         sourceLocation.clear();
                         destinationLocation.clear();
                       } else {
-                        toast("Please Select Location");
+                        toast(language.pleaseSelectLocation);
                       }
                     },
                     child: Row(

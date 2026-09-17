@@ -80,7 +80,7 @@ class MoovMoneyPaymentScreenState extends State<MoovMoneyPaymentScreen> {
       pollTimer?.cancel();
       waitingConfirmation = false;
       setState(() {});
-      toast('Your Moov Money payment is still processing. Please check your wallet balance in a moment before retrying.');
+      toast(language.paymentStillProcessing);
       return;
     }
 
@@ -145,7 +145,7 @@ class MoovMoneyPaymentScreenState extends State<MoovMoneyPaymentScreen> {
               if (waitingConfirmation) SizedBox(height: 16),
               if (waitingConfirmation)
                 Text(
-                  'Waiting for you to confirm this payment on your phone...',
+                  language.waitingForPaymentConfirmationOnPhone,
                   style: secondaryTextStyle(),
                 ),
             ],

@@ -111,7 +111,7 @@ class _DrawerComponentState extends State<DrawerComponent> {
                 if (getDriverAppStoreUrl() != null)
                   DrawerWidget(
                       paddingApply: true,
-                      title: 'Devenir chauffeur',
+                      title: language.becomeADriver,
                       iconData: DriverIcon,
                       onTap: () {
                         Navigator.pop(context);
@@ -119,7 +119,7 @@ class _DrawerComponentState extends State<DrawerComponent> {
                       }),
                 DrawerWidget(
                     paddingApply: true,
-                    title: 'Mighty Coin History',
+                    title: language.mightyCoinHistory,
                     iconData: ic_earn,
                     onTap: () {
                       Navigator.pop(context);

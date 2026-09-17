@@ -151,7 +151,7 @@ class PaymentScreenState extends State<PaymentScreen> {
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
-    toast("EXTERNAL_WALLET: " + response.walletName!);
+    toast("${language.externalWallet} ${response.walletName!}");
   }
 
   /// StripPayment
@@ -355,7 +355,7 @@ class PaymentScreenState extends State<PaymentScreen> {
                 },
                 mInitialUrl: link));
       } else {
-        toast("Payment failed: Invalid token or unsupported currency.", length: Toast.LENGTH_LONG);
+        toast(language.paymentFailedInvalidToken, length: Toast.LENGTH_LONG);
         appStore.setLoading(false);
         return null;
       }
@@ -480,7 +480,7 @@ class PaymentScreenState extends State<PaymentScreen> {
           toast(language.transactionSuccessful);
           paymentConfirm(amount: chargeAmount);
         } else if (res.status == 'pending' || res.status == 'initiated') {
-          toast('Your Moneroo payment is still processing. Please check your wallet balance in a moment before retrying.');
+          toast(language.paymentStillProcessing);
         } else {
           toast(language.transactionFailed);
         }
@@ -582,10 +582,10 @@ class PaymentScreenState extends State<PaymentScreen> {
           paymentConfirm();
         }
       } catch (e) {
-        toast("Payment failed: Invalid token or unsupported currency.", length: Toast.LENGTH_LONG);
+        toast(language.paymentFailedInvalidToken, length: Toast.LENGTH_LONG);
       }
     } catch (e) {
-      toast("Payment failed: Invalid token or unsupported currency.", length: Toast.LENGTH_LONG);
+      toast(language.paymentFailedInvalidToken, length: Toast.LENGTH_LONG);
     }
   }
 

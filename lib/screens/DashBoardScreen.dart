@@ -439,11 +439,11 @@ class DashBoardScreenState extends State<DashBoardScreen> with SingleTickerProvi
                         ),
                       );
                     } on TimeoutException catch (_) {
-                      toast("Location request timed out");
+                      toast(language.locationRequestTimedOut);
                     } on PermissionDeniedException catch (_) {
-                      toast("Location permission denied");
+                      toast(language.pleaseEnableLocationPermission);
                     } catch (e) {
-                      toast("Unable to fetch location: $e");
+                      toast("${language.unableToFetchLocation} $e");
                     } finally {
                       appStore.setLoading(false);
                     }
@@ -644,7 +644,7 @@ class DashBoardScreenState extends State<DashBoardScreen> with SingleTickerProvi
                                       pickupTimeController.text = DateFormat('dd MMM yy hh:mm a').format(selectedDateTime);
                                     });
                                   } else {
-                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please select a future time.')));
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(language.pleaseSelectFutureTime)));
                                   }
                                 }
                               }
@@ -667,10 +667,10 @@ class DashBoardScreenState extends State<DashBoardScreen> with SingleTickerProvi
                         }
                         tripDetail['trip_type'] = getTripTypeValue(selectedTripType);
                         if (selectedTripType.toLowerCase().contains("airport") && flightNumberController.text.isEmpty) {
-                          return toast("Please Provide Flight Number");
+                          return toast(language.pleaseProvideFlightNumber);
                         }
                         if (selectedTripType.toLowerCase().contains("airport") && pickupTimeController.text.isEmpty) {
-                          return toast("Please Pickup Time");
+                          return toast(language.pleaseProvidePickupTime);
                         }
                         showModalBottomSheet(
                           isScrollControlled: true,

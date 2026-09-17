@@ -127,7 +127,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   RichText(
                     text: TextSpan(
                       children: [
-                        TextSpan(text: 'Sign up to get started ', style: primaryTextStyle(size: 14)),
+                        TextSpan(text: '${language.signUpToGetStarted} ', style: primaryTextStyle(size: 14)),
                         TextSpan(text: '🚗', style: primaryTextStyle(size: 20)),
                       ],
                     ),
@@ -280,7 +280,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                     autoFocus: false,
                     textFieldType: TextFieldType.OTHER,
                     errorThisFieldRequired: errorThisFieldRequired,
-                    decoration: inputDecoration(context, label: "Referral Code"),
+                    decoration: inputDecoration(context, label: language.referral_code),
                   ),
                   SizedBox(height: 16),
                   Row(

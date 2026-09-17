@@ -169,7 +169,7 @@ class SebPayPaymentScreenState extends State<SebPayPaymentScreen> {
       pollTimer?.cancel();
       waitingConfirmation = false;
       setState(() {});
-      toast('Your SebPay payment is still processing. Please check your wallet balance in a moment before retrying.');
+      toast(language.paymentStillProcessing);
       return;
     }
 
@@ -213,11 +213,7 @@ class SebPayPaymentScreenState extends State<SebPayPaymentScreen> {
     }).catchError((error) {
       appStore.setLoading(false);
       log(error.toString());
-      toast(
-        'Your SebPay payment was successful, but updating your wallet balance failed. '
-        'Please contact support and reference transaction $transactionId.',
-        print: true,
-      );
+      toast('${language.paymentSuccessWalletUpdateFailed} $transactionId.', print: true);
     });
   }
 
@@ -238,7 +234,7 @@ class SebPayPaymentScreenState extends State<SebPayPaymentScreen> {
                   children: [
                     DropdownButtonFormField<String>(
                       isExpanded: true,
-                      decoration: inputDecoration(context, label: 'Country'),
+                      decoration: inputDecoration(context, label: language.country),
                       items: countries.map((c) => DropdownMenuItem(value: c.code, child: Text(c.name.validate()))).toList(),
                       value: selectedCountryCode,
                       onChanged: onCountryChanged,
@@ -249,7 +245,7 @@ class SebPayPaymentScreenState extends State<SebPayPaymentScreen> {
                     if (!loadingOperators)
                       DropdownButtonFormField<String>(
                         isExpanded: true,
-                        decoration: inputDecoration(context, label: 'Mobile Money Operator'),
+                        decoration: inputDecoration(context, label: language.mobileMoneyOperator),
                         items: operators.map((o) => DropdownMenuItem(value: o.slug, child: Text(o.name.validate()))).toList(),
                         value: selectedOperatorSlug,
                         onChanged: (value) {
@@ -269,7 +265,7 @@ class SebPayPaymentScreenState extends State<SebPayPaymentScreen> {
                     if (otpRequired) SizedBox(height: 16),
                     if (otpRequired)
                       Text(
-                        'Dial ${selectedOperator?.ussdCode ?? ''} on your phone to receive your confirmation code',
+                        '${language.dialPrefix} ${selectedOperator?.ussdCode ?? ''} ${language.dialSuffix}',
                         style: secondaryTextStyle(),
                       ),
                     if (otpRequired) SizedBox(height: 8),
@@ -277,13 +273,13 @@ class SebPayPaymentScreenState extends State<SebPayPaymentScreen> {
                       AppTextField(
                         controller: otpController,
                         textFieldType: TextFieldType.OTHER,
-                        decoration: inputDecoration(context, label: 'OTP Code'),
+                        decoration: inputDecoration(context, label: language.otpCode),
                         errorThisFieldRequired: language.thisFieldRequired,
                       ),
                     if (waitingConfirmation) SizedBox(height: 16),
                     if (waitingConfirmation)
                       Text(
-                        'Waiting for you to confirm this payment on your phone...',
+                        language.waitingForPaymentConfirmationOnPhone,
                         style: secondaryTextStyle(),
                       ),
                   ],

@@ -48,7 +48,7 @@ class _PDFViewerState extends State<PDFViewer> {
         File file = File('${path}/${fileName}.pdf');
         await file.writeAsBytes(bytes, flush: true);
         appStore.setLoading(false);
-        toast("invoice downloaded at ${file.path}");
+        toast("${language.invoiceDownloadedAt} ${file.path}");
 
         final filef = File(file.path);
         if (await filef.exists()) {
@@ -61,7 +61,7 @@ class _PDFViewerState extends State<PDFViewer> {
       }
     } else {
       appStore.setLoading(false);
-      toast("Failed to download pdf");
+      toast(language.failedToDownloadPdf);
       throw Exception('Failed to download PDF');
     }
   }
