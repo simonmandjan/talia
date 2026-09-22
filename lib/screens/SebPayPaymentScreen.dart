@@ -123,7 +123,12 @@ class SebPayPaymentScreenState extends State<SebPayPaymentScreen> {
       'amount': chargeAmount,
       'currency': appStore.currencyName.toUpperCase(),
       'phone': phoneController.text.trim(),
-      'operator': selectedOperatorSlug,
+      // SebPay's /collections endpoint validates the operator against its
+      // plain code (e.g. "mtn"), not the per-country slug (e.g. "mtn-cm")
+      // returned by /operators - the country is already sent separately
+      // below, so the slug's embedded country suffix makes it fail SebPay's
+      // lookup ("Operator not found or not configured for this country").
+      'operator': selectedOperator?.code ?? selectedOperatorSlug,
       'country': selectedCountryCode,
     };
     if (otpRequired) request['otp_code'] = otpController.text.trim();

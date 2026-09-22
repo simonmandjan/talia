@@ -27,15 +27,17 @@ class SebPayCountriesResponse {
 
 class SebPayOperator {
   final String? slug;
+  final String? code;
   final String? name;
   final bool otpRequired;
   final String? ussdCode;
 
-  SebPayOperator({this.slug, this.name, this.otpRequired = false, this.ussdCode});
+  SebPayOperator({this.slug, this.code, this.name, this.otpRequired = false, this.ussdCode});
 
   factory SebPayOperator.fromJson(Map<String, dynamic> json) {
     return SebPayOperator(
       slug: json['slug'],
+      code: json['code'],
       name: json['name'],
       otpRequired: json['otp_required'] == true,
       ussdCode: json['ussd_code'],
