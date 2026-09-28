@@ -86,6 +86,7 @@ export '../components/AboutWidget.dart';
 export '../components/BookingWidget.dart';
 export '../components/CarDetailWidget.dart';
 export '../components/ChatItemWidget.dart';
+export '../components/HomeDestinationCard.dart';
 export '../components/ImageSourceDialog.dart';
 export '../components/RideAcceptWidget.dart';
 export '../components/UpdateAvailablePopUp.dart';

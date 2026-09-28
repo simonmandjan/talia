@@ -1,4 +1,6 @@
 const ic_app_logo = 'images/app_images/ic_app_logo.png';
+const ic_talia_car_hero = 'images/talia_car_hero.png';
+const ic_devenir_chauffeur_banner = 'images/devenir_chauffeur_banner.png';
 const ic_logo_white = 'images/app_images/ic_logo_white.png';
 const ic_walk1 = 'images/app_images/ic_walk1.png';
 const ic_walk2 = 'images/app_images/ic_walk2.png';

@@ -679,7 +679,7 @@
         "screenId": "5",
         "keyword_id": 443,
         "keyword_name": "bookService",
-        "keyword_value": "Book Service"
+        "keyword_value": "More Services"
       },
       {
         "screenId": "5",
@@ -781,13 +781,13 @@
         "screenId": "5",
         "keyword_id": 96,
         "keyword_name": "currentLocation",
-        "keyword_value": "Current Location"
+        "keyword_value": "Your Location"
       },
       {
         "screenId": "5",
         "keyword_id": 97,
         "keyword_name": "destinationLocation",
-        "keyword_value": "Destination Location"
+        "keyword_value": "Your Destination"
       },
       {
         "screenId": "5",
