@@ -1,4 +1,5 @@
 const ic_app_logo = 'images/app_images/ic_app_logo.png';
+const ic_talia_logo_pill = 'images/talia_logo_pill.png';
 const ic_talia_car_hero = 'images/talia_car_hero.png';
 const ic_devenir_chauffeur_banner = 'images/devenir_chauffeur_banner.png';
 const ic_logo_white = 'images/app_images/ic_logo_white.png';

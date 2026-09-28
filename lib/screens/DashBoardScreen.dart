@@ -415,19 +415,6 @@ class DashBoardScreenState extends State<DashBoardScreen> with SingleTickerProvi
             ),
           Positioned(
             top: context.statusBarHeight + 4,
-            left: 0,
-            right: 0,
-            child: Column(
-              children: [
-                SizedBox(height: 48),
-                Image.asset(ic_app_logo, height: 40, fit: BoxFit.contain),
-                SizedBox(height: 4),
-                Image.asset(ic_talia_car_hero, height: 100, fit: BoxFit.contain),
-              ],
-            ),
-          ),
-          Positioned(
-            top: context.statusBarHeight + 4,
             right: 14,
             left: 14,
             child: Column(
@@ -476,46 +463,49 @@ class DashBoardScreenState extends State<DashBoardScreen> with SingleTickerProvi
           ),
           if (serviceType == 0)
             Positioned(
-              top: context.statusBarHeight + 200,
-              left: 14,
-              right: 14,
-              child: HomeDestinationCard(
-                sourceTitle: addressTitle,
-                onSourceChanged: () {
-                  addressTitle = sourceLocationTitle;
-                  setState(() {});
-                },
-              ),
-            ),
-          if (serviceType == 0)
-            Positioned(
-              bottom: 90,
-              left: 16,
-              right: 16,
-              child: inkWellWidget(
-                onTap: () {
-                  launchUrl(Uri.parse('https://play.google.com/store/apps/details?id=com.talia.driver'), mode: LaunchMode.externalApplication);
-                },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(defaultRadius),
-                  child: Image.asset(ic_devenir_chauffeur_banner, height: 90, width: double.infinity, fit: BoxFit.cover),
+              top: context.statusBarHeight + 56,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                child: Column(
+                  children: [
+                    Image.asset(ic_talia_logo_pill, height: 40, fit: BoxFit.contain),
+                    SizedBox(height: 8),
+                    Image.asset(ic_talia_car_hero, height: 60, fit: BoxFit.contain),
+                    SizedBox(height: 12),
+                    HomeDestinationCard(
+                      sourceTitle: addressTitle,
+                      onSourceChanged: () {
+                        addressTitle = sourceLocationTitle;
+                        setState(() {});
+                      },
+                    ),
+                    SizedBox(height: 24),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(defaultRadius),
+                      child: inkWellWidget(
+                        onTap: () {
+                          launchUrl(Uri.parse('https://play.google.com/store/apps/details?id=com.talia.driver'), mode: LaunchMode.externalApplication);
+                        },
+                        child: Image.asset(ic_devenir_chauffeur_banner, width: double.infinity, fit: BoxFit.fitWidth),
+                      ),
+                    ),
+                    SizedBox(height: 40),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: GestureDetector(
+                        onTap: () {
+                          serviceType = 1;
+                          setState(() {});
+                        },
+                        child: BookServiceButton(),
+                      ),
+                    ),
+                    SizedBox(height: 24),
+                  ],
                 ),
-              ),
-            ),
-          if (serviceType == 0)
-            Positioned(
-              bottom: 16,
-              right: 16,
-              child: Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      serviceType = 1;
-                      setState(() {});
-                    },
-                    child: BookServiceButton(),
-                  ),
-                ],
               ),
             ),
           if (serviceType == 1)
