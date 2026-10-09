@@ -37,7 +37,7 @@ class _DrawerComponentState extends State<DrawerComponent> {
                             children: [
                               Text(sharedPref.getString(FIRST_NAME).validate().capitalizeFirstLetter() + " " + sharedPref.getString(LAST_NAME).validate().capitalizeFirstLetter(), style: boldTextStyle()),
                               SizedBox(height: 4),
-                              Text(appStore.userEmail, style: secondaryTextStyle()),
+                              if (!isPhoneOnlyEmail(appStore.userEmail)) Text(appStore.userEmail, style: secondaryTextStyle()),
                             ],
                           ),
                         ),

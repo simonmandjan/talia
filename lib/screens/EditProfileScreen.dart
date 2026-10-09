@@ -220,7 +220,8 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                     ],
                   ),
                   SizedBox(height: 20),
-                  AppTextField(
+                  if (!isPhoneOnlyEmail(emailController.text))
+                    AppTextField(
                     readOnly: true,
                     controller: emailController,
                     textFieldType: TextFieldType.EMAIL,

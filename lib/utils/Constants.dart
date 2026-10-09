@@ -272,3 +272,18 @@ double? defaultInkWellRadius;
 Color? defaultInkWellSplashColor;
 Color? defaultInkWellHoverColor;
 Color? defaultInkWellHighlightColor;
+
+// Technical e-mail given to accounts created by phone number without an e-mail.
+// The backend requires a unique e-mail, so one is generated; it is never shown to the user.
+const phoneOnlyEmailDomain = '@phone.my-talia.com';
+
+bool isPhoneOnlyEmail(String? email) => (email ?? '').endsWith(phoneOnlyEmailDomain);
+
+String phoneOnlyEmail(String? countryCode, String? number) => '${'$countryCode$number'.replaceAll(RegExp(r'[^0-9]'), '')}$phoneOnlyEmailDomain';
+
+// E-mail field validator for phone sign-up: empty is accepted, otherwise it must be a valid address.
+String? optionalEmailValidator(String? value) {
+  String email = (value ?? '').trim();
+  if (email.isEmpty || RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(email)) return null;
+  return 'Email is invalid';
+}

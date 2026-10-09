@@ -61,6 +61,13 @@ class SignUpScreenState extends State<SignUpScreen> {
     if (mounted) super.setState(fn);
   }
 
+  // Phone sign-up may leave the e-mail empty: a technical one is sent instead.
+  String get signUpEmail {
+    String email = emailController.text.trim();
+    if (email.isEmpty && widget.socialLogin) return phoneOnlyEmail(widget.countryCode, widget.userName);
+    return email;
+  }
+
   Future<void> register() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
@@ -71,7 +78,7 @@ class SignUpScreenState extends State<SignUpScreen> {
           'first_name': firstController.text.trim(),
           'last_name': lastNameController.text.trim(),
           'username': widget.socialLogin ? widget.userName : userNameController.text.trim(),
-          'email': emailController.text.trim(),
+          'email': signUpEmail,
           "user_type": "rider",
           "contact_number": widget.socialLogin ? '${widget.userName}' : '${phoneController.text.trim()}',
           "country_code": widget.socialLogin ? '${widget.countryCode}' : '$countryCode',
@@ -85,7 +92,7 @@ class SignUpScreenState extends State<SignUpScreen> {
           authService
               .signUpWithEmailPassword(getContext,
                   mobileNumber: widget.socialLogin ? '${widget.countryCode}${widget.userName}' : '$countryCode${phoneController.text.trim()}',
-                  email: emailController.text.trim(),
+                  email: signUpEmail,
                   fName: firstController.text.trim(),
                   lName: lastNameController.text.trim(),
                   userName: widget.socialLogin ? widget.userName : userNameController.text.trim(),
@@ -180,6 +187,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                     textFieldType: TextFieldType.EMAIL,
                     keyboardType: TextInputType.emailAddress,
                     errorThisFieldRequired: errorThisFieldRequired,
+                    validator: widget.socialLogin ? optionalEmailValidator : null,
                     decoration: inputDecoration(context, label: language.email),
                   ),
                   if (widget.socialLogin != true) SizedBox(height: 20),

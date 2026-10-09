@@ -6,7 +6,10 @@ class OTPDialog extends StatefulWidget {
   final bool? isCodeSent;
   final PhoneAuthCredential? credential;
 
-  OTPDialog({this.verificationId, this.isCodeSent, this.phoneNumber, this.credential});
+  // true when the phone form is shown inside the sign-in screen instead of a dialog
+  final bool embedded;
+
+  OTPDialog({this.verificationId, this.isCodeSent, this.phoneNumber, this.credential, this.embedded = false});
 
   @override
   OTPDialogState createState() => OTPDialogState();
@@ -67,7 +70,7 @@ class OTPDialogState extends State<OTPDialog> {
       String number = '$otpCode ${phoneController.text.trim()}';
 
       log('sendotp $otpCode${phoneController.text.trim()}');
-      await authService.loginWithOTP(context, number).then((value) {}).catchError((e) {
+      await authService.loginWithOTP(context, number, closeDialog: !widget.embedded).then((value) {}).catchError((e) {
         appStore.setLoading(false);
         toast(e.toString());
       });
@@ -86,6 +89,7 @@ class OTPDialogState extends State<OTPDialog> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if (!widget.embedded)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +108,7 @@ class OTPDialogState extends State<OTPDialog> {
               )
             ],
           ),
-          SizedBox(height: 30),
+          if (!widget.embedded) SizedBox(height: 30),
           Form(
             key: formKey,
             child: AppTextField(
@@ -176,7 +180,7 @@ class OTPDialogState extends State<OTPDialog> {
               Positioned(
                 child: Observer(builder: (context) {
                   return Visibility(
-                    visible: appStore.isLoading,
+                    visible: appStore.isLoading && !widget.embedded,
                     child: loaderWidget(),
                   );
                 }),
@@ -213,8 +217,8 @@ class OTPDialogState extends State<OTPDialog> {
                 ],
               ),
               SizedBox(height: 16),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
+              FittedBox(
+                fit: BoxFit.scaleDown,
                 child: Directionality(
                   textDirection: TextDirection.ltr,
                   child: Pinput(

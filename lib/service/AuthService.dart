@@ -143,7 +143,7 @@ class AuthServices {
     }
   }
 
-  Future<void> loginWithOTP(BuildContext context, String phoneNumber) async {
+  Future<void> loginWithOTP(BuildContext context, String phoneNumber, {bool closeDialog = true}) async {
     appStore.setLoading(true);
     return await _auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
@@ -162,7 +162,7 @@ class AuthServices {
         }
       },
       codeSent: (String verificationId, int? resendToken) async {
-        Navigator.pop(context);
+        if (closeDialog) Navigator.pop(context);
         appStore.setLoading(false);
         await showDialog(
           context: context,

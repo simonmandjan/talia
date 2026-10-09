@@ -24,6 +24,9 @@ class SignInScreenState extends State<SignInScreen> {
   // String? termsCondition;
 
   bool mIsRemember = false;
+
+  // Phone number is the main sign-in method; e-mail/password stays available as an option
+  bool isPhoneLogin = true;
   bool isAcceptTermsNPrivacy = false;
 
   @override
@@ -201,6 +204,8 @@ class SignInScreenState extends State<SignInScreen> {
                     ),
                   ),
                   SizedBox(height: 40),
+                  if (isPhoneLogin) OTPDialog(embedded: true),
+                  if (!isPhoneLogin) ...[
                   AppTextField(
                     controller: emailController,
                     nextFocus: passFocus,
@@ -328,6 +333,7 @@ class SignInScreenState extends State<SignInScreen> {
                       logIn();
                     },
                   ),
+                  ],
                   SizedBox(height: 16),
                   socialWidget(),
                   SizedBox(height: 16),
@@ -400,21 +406,14 @@ class SignInScreenState extends State<SignInScreen> {
             SizedBox(width: 12),
             inkWellWidget(
               onTap: () async {
-                showDialog(
-                  context: context,
-                  builder: (_) {
-                    return AlertDialog(
-                      contentPadding: EdgeInsets.all(16),
-                      content: OTPDialog(),
-                    );
-                  },
-                );
-                appStore.setLoading(false);
+                hideKeyboard(context);
+                isPhoneLogin = !isPhoneLogin;
+                setState(() {});
               },
               child: Container(
                 padding: EdgeInsets.all(4),
                 decoration: BoxDecoration(border: Border.all(color: dividerColor), borderRadius: radius(defaultRadius)),
-                child: Image.asset(ic_mobile, fit: BoxFit.cover, height: 30, width: 30),
+                child: isPhoneLogin ? Icon(Icons.email_outlined, size: 30) : Image.asset(ic_mobile, fit: BoxFit.cover, height: 30, width: 30),
               ),
             ),
             if (Platform.isIOS) SizedBox(width: 12),
