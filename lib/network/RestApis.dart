@@ -481,6 +481,14 @@ Future<PolyLineData> getPolylineData(String origins, String destinations) async 
 }
 
 Future<SearchLocationModel> searchAddressRequest(Map request) async {
+  // Urban rides only: the backend limits suggestions to 50 km around the rider's position
+  double? latitude = sharedPref.getDouble(LATITUDE);
+  double? longitude = sharedPref.getDouble(LONGITUDE);
+  if (latitude != null && longitude != null) {
+    request.putIfAbsent('latitude', () => latitude);
+    request.putIfAbsent('longitude', () => longitude);
+  }
+
   return SearchLocationModel.fromJson(await handleResponse(await buildHttpResponse('place-autocomplete-api', method: HttpMethod.POST, request: request)));
 }
 

@@ -245,15 +245,15 @@ class GoogleMapScreenState extends State<GoogleMapScreen> {
         Uri.parse('https://places.googleapis.com/v1/places:autocomplete'),
       );
 
-      // ✅ Ajout du bias de localisation pour favoriser les résultats locaux
+      // ✅ Restriction de localisation : uniquement les résultats de la zone (courses urbaines)
       Map<String, dynamic> body = {
         "input": query,
         "languageCode": appStore.selectedLanguage.validate(value: defaultLanguageCode),
       };
 
-      // Si on a la position actuelle, on biaise vers cette zone
+      // Si on a la position actuelle, on limite les résultats à cette zone
       if (selectedPosition != null) {
-        body["locationBias"] = {
+        body["locationRestriction"] = {
           "circle": {
             "center": {
               "latitude": selectedPosition!.latitude,
