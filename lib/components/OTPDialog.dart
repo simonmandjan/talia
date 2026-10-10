@@ -30,8 +30,12 @@ class OTPDialogState extends State<OTPDialog> {
     AuthCredential credential = PhoneAuthProvider.credential(verificationId: widget.verificationId!, smsCode: verId.validate());
 
     await FirebaseAuth.instance.signInWithCredential(credential).then((result) async {
+      // Proof for the backend that this phone number passed the OTP check
+      String? idToken = await result.user?.getIdToken();
+
       Map req = {
         "email": "",
+        "firebase_id_token": idToken ?? '',
         "login_type": "mobile",
         "user_type": RIDER,
         "username": widget.phoneNumber!.split(" ").last,
