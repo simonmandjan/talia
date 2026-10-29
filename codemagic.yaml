@@ -43,22 +43,56 @@ workflows:
       - build/app/outputs/**/mapping.txt
 
   # Builds an UNSIGNED archive only, to prove the iOS toolchain works.
-  # Do not enable real signing / app_store_connect publishing here until
-  # the Apple Developer account exists — see docs/superpowers/specs/2026-08-15-app-publishing-pipeline-design.md.
+  # Signed App Store build, uploaded to TestFlight (no automatic App Store review submission).
+  # One-time setup in Codemagic before the first run:
+  #   1. Teams > Integrations > Apple Developer Portal: add an App Store Connect API key named "talia_asc".
+  #   2. Group "secrets": add CERTIFICATE_PRIVATE_KEY (RSA private key, PEM, used to create the
+  #      distribution certificate) and GOOGLE_SERVICE_INFO_PLIST_RIDER_BASE64 (base64 of this app's GoogleService-Info.plist).
+  #   3. Both bundle IDs (app + OneSignal notification extension) registered in the Apple account,
+  #      app record created in App Store Connect.
   ios-release:
-    name: iOS Release (manual, unsigned — prep only)
+    name: iOS Release (App Store / TestFlight)
     max_build_duration: 60
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: talia_asc
     environment:
       groups:
         - secrets
+      vars:
+        BUNDLE_ID: "com.talia.taxi"
+        EXTENSION_BUNDLE_ID: "com.talia.taxi.OneSignalNotificationServiceExtension"
       flutter: 3.32.7
+      xcode: latest
+      cocoapods: default
     scripts:
       - name: Get Flutter packages
         script: flutter pub get
-      - name: Build unsigned iOS archive
+      - name: Set up Firebase iOS config
         script: |
-          flutter build ipa --release --no-codesign \
+          echo "$GOOGLE_SERVICE_INFO_PLIST_RIDER_BASE64" | tr -d '[:space:]' | base64 --decode > ios/Runner/GoogleService-Info.plist
+          plutil -lint ios/Runner/GoogleService-Info.plist || (echo "ERROR: GOOGLE_SERVICE_INFO_PLIST_RIDER_BASE64 did not decode to a valid plist - check the Codemagic variable value" && exit 1)
+      - name: Install CocoaPods dependencies
+        script: cd ios && pod install
+      - name: Set up code signing
+        script: |
+          keychain initialize
+          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
+          app-store-connect fetch-signing-files "$EXTENSION_BUNDLE_ID" --type IOS_APP_STORE --create
+          keychain add-certificates
+          xcode-project use-profiles
+      - name: Set build number
+        script: sed -i '' -E "s/CURRENT_PROJECT_VERSION = [^;]+;/CURRENT_PROJECT_VERSION = $BUILD_NUMBER;/" ios/Runner.xcodeproj/project.pbxproj
+      - name: Build signed IPA
+        script: |
+          flutter build ipa --release \
+            --export-options-plist=/Users/builder/export_options.plist \
             --dart-define=ONESIGNAL_REST_KEY_DRIVER=$ONESIGNAL_REST_KEY_DRIVER \
             --dart-define=ONESIGNAL_REST_KEY_RIDER=$ONESIGNAL_REST_KEY_RIDER
     artifacts:
-      - build/ios/archive/*.xcarchive
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
