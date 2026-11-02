@@ -73,7 +73,11 @@ workflows:
           echo "$GOOGLE_SERVICE_INFO_PLIST_RIDER_BASE64" | tr -d '[:space:]' | base64 --decode > ios/Runner/GoogleService-Info.plist
           plutil -lint ios/Runner/GoogleService-Info.plist || (echo "ERROR: GOOGLE_SERVICE_INFO_PLIST_RIDER_BASE64 did not decode to a valid plist - check the Codemagic variable value" && exit 1)
       - name: Install CocoaPods dependencies
-        script: cd ios && pod install
+        script: |
+          # Drop any stale generated Flutter config (it can carry Windows paths); pub get regenerates it
+          rm -f ios/Flutter/Generated.xcconfig ios/Flutter/flutter_export_environment.sh
+          flutter pub get
+          cd ios && pod install
       - name: Set up code signing
         script: |
           keychain initialize
