@@ -66,6 +66,8 @@
 	<string>Talia a besoin d'accéder à votre photothèque pour choisir votre photo de profil.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
