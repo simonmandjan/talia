@@ -324,18 +324,21 @@ Future<UserCredential?> appleLogIn(BuildContext context) async {
     debugPrint("APPLE USER fname: ${appleCred.givenName}");
 
     if (sharedPref.getString('appleGivenName').isEmptyOrNull) {
-      await setValue('appleGivenName', appleCred.givenName);
+      await setValue('appleGivenName', appleCred.givenName ?? '');
     }
 
-    // FIRST TIME → Apple gives email
-    if (!appleCred.email.isEmptyOrNull && !appleCred.givenName.isEmptyOrNull) {
+    if (!appleCred.email.isEmptyOrNull) {
+      // FIRST TIME → Apple gives the email (the name can be empty if the user removed it)
       await saveAppleData(result, context, appleCred: appleCred);
       return result;
-    } else if (appleCred.email.isEmptyOrNull && !sharedPref.getString('appleGivenName').isEmptyOrNull && sharedPref.getString('appleEmail').isEmptyOrNull) {
+    } else if (sharedPref.getString('appleEmail').isEmptyOrNull) {
+      // Apple gave no email and we have none stored → ask for it
       askUserForEmail(context, result, appleCred);
-    } else if (appleCred.email.isEmptyOrNull && appleCred.givenName.isEmptyOrNull) {
+    } else {
+      // Returning user: reuse the stored email/name
       loginFromFirebase(result.user!, LoginTypeApple, appleCred.authorizationCode, appleCred.userIdentifier, false, context);
     }
+    return null;
   } catch (e) {
     debugPrint("Apple Login Error: $e");
     rethrow;
@@ -597,7 +600,9 @@ Future<void> loginFromFirebase(User currentUser, String loginType, String? acces
       }
       AuthServices authService = AuthServices();
       authService.loginFromFirebaseUser(currentUser, loginDetail: value, fullName: (firstName + lastName).toLowerCase()).then((value) {});
-      Navigator.pop(getContext);
+      // Do not pop the sign-in route here: it is the only route, popping it leaves a blank screen.
+      // Every branch below ends with launchScreen(isNewTask: true), which replaces it.
+      try {
       sharedPref.setString(UID, currentUser.uid);
       await appStore.setUserProfile(currentUser.photoURL.toString());
       await sharedPref.setString(USER_PROFILE_PHOTO, currentUser.photoURL.toString());
@@ -613,7 +618,6 @@ Future<void> loginFromFirebase(User currentUser, String loginType, String? acces
             if (response.statusCode == 200) {
               imgFile = File(filePath);
               await imgFile.writeAsBytes(response.bodyBytes);
-              return imgFile;
             } else {
               imgFile = null;
             }
@@ -628,16 +632,23 @@ Future<void> loginFromFirebase(User currentUser, String loginType, String? acces
             launchScreen(getContext, DashBoardScreen(), isNewTask: true, pageRouteAnimation: PageRouteAnimation.Slide);
           }).catchError((error) {
             log(error.toString());
+            launchScreen(getContext, DashBoardScreen(), isNewTask: true, pageRouteAnimation: PageRouteAnimation.Slide);
           });
         } else if (value.data!.playerId.isEmptyOrNull) {
           await updatePlayerId().then((value) {
             launchScreen(getContext, DashBoardScreen(), isNewTask: true, pageRouteAnimation: PageRouteAnimation.Slide);
           }).catchError((error) {
             log(error.toString());
+            launchScreen(getContext, DashBoardScreen(), isNewTask: true, pageRouteAnimation: PageRouteAnimation.Slide);
           });
         } else {
           launchScreen(getContext, DashBoardScreen(), isNewTask: true, pageRouteAnimation: PageRouteAnimation.Slide);
         }
+      }
+      } catch (e) {
+        // Whatever failed above, never leave the user on an empty screen
+        log(e.toString());
+        launchScreen(getContext, DashBoardScreen(), isNewTask: true, pageRouteAnimation: PageRouteAnimation.Slide);
       }
     } else {
       toast(value.message);
